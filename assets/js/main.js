@@ -251,28 +251,106 @@
 
 })()
 
-$(document).ready(function(){
-  $("#gform").validate({
-    rules:{
-      fname:{
-        required:true,
-        minlength:4
-      },
+// Script for form validation
 
-      email:{
-        required:true,
-        email:true
-      },
+var nameError = document.getElementById('name-error')
+var emailError = document.getElementById('email-error')
+var subjectError = document.getElementById('subject-error')
+var messageError = document.getElementById('message-error')
+var submitError = document.getElementById('submit-error')
 
-      subject:{
-        required:true
-      },
+function validateName(){
+  
+      var name = document.getElementById('name').value
 
-      message:{
-        required:true,
+      if(name.length == 0 ){
+          nameError.innerHTML = 'Name is Required'
+          return false
       }
+      if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
 
-    },
-   
-  })
-})
+          nameError.innerHTML = 'Write Full Name'
+          return false
+
+      }
+      nameError.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
+      
+      return true
+      
+}
+
+
+function validateEmail(){
+
+  var email = document.getElementById('email').value
+
+  if(email.length ==0 ){
+
+      emailError.innerHTML = 'Email ID is Required'
+      return false
+
+  }
+  if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/) ){
+
+      emailError.innerHTML = 'Enter Correct Email ID (eg: example@gmail.com)'
+      return false
+
+  }
+      emailError.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
+
+      return true
+
+}
+function validateSubject(){
+  
+  var subject = document.getElementById('subject').value
+
+  if(subject.length == 0 ){
+      subjectError.innerHTML = 'subject is Required'
+      return false
+  }
+  
+  subjectError.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
+  
+  return true
+  
+}
+function validateMessage(){
+  
+  var message = document.getElementById('subject').value
+
+  if(message.length == 0 ){
+      messageError.innerHTML = 'message is Required'
+      return false
+  }
+  
+  messageError.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
+  
+  return true
+  
+}
+
+function validateForm(){
+
+  if( !validateName() || !validateEmail() || !validateSubject() || !validateMessage() ){
+
+      submitError.innerHTML = 'Please fill the form correctly and Submit Again'
+
+      setTimeout(function(){submitError.innerHTML = ''},3000)
+      
+      return false
+  }
+
+  success.innerHTML = "Thanks for your Enquiry. We will come back to you soon."
+  nameError.innerHTML = ''
+  phoneError.innerHTML = ''
+  emailError.innerHTML = ''
+
+
+  return true
+  
+
+  
+}
+
+
