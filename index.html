@@ -482,22 +482,29 @@
       <form  role="form" id="gform" class="mt-4">
         <div class="row">
           <div class="col-md-6 form-group">
-            <input type="text" name="fname" class="form-control bg-dark border border-0 text-white" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" class="form-control bg-dark border border-0 text-white" id="name" onkeyup="validateName()" placeholder="Your Name" required>
+            <span class="text-danger" id="name-error"></span>
           </div>
           <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control bg-dark border border-0 text-white" name="email" id="email" placeholder="Your Email" required>
+            <input type="email" class="form-control bg-dark border border-0 text-white" name="email" id="email" onkeyup="validateEmail()" placeholder="Your Email" required>
+            <span class="text-danger" id="email-error"></span>
           </div>
         </div>
         <div class="form-group mt-3">
-          <input type="text" class="form-control bg-dark border border-0 text-white" name="subject" id="subject" placeholder="Subject" required>
+          <input type="text" class="form-control bg-dark border border-0 text-white" name="subject" id="subject" onkeyup="validateSubject()" onkeyup="validateName()" placeholder="Subject" required>
+          <span class="text-danger" id="subject-error"></span>
         </div>
         <div class="form-group mt-3">
-          <textarea class="form-control bg-dark border border-0 text-white" name="message" rows="5" placeholder="Message" required></textarea>
+          <textarea class="form-control bg-dark border border-0 text-white" name="message" id="message" onkeyup="validateMessage()"  rows="5" placeholder="Message" required></textarea>
+          <span class="text-danger" id="message-error"></span>
         </div>
         <br>
-        <div class="text-center"><button type="submit" class="btn btn-lg text-white" style="background-color: #18d26e;
+       
+        <div class="text-center"><button type="submit" class="btn btn-lg text-white" onclick=" return validateForm()" style="background-color: #18d26e;
           transition: 0.3s;">Send Message</button></div>
+           <span class="text-danger" id="submit-error"></span>
       </form>
+      <span class="text-success" id="success"></span>
 
     </div>
   </section><!-- End Contact Section -->
