@@ -335,6 +335,10 @@ function validateForm(){
   if( !validateName() || !validateEmail() || !validateSubject() || !validateMessage() ){
 
       submitError.innerHTML = 'Please fill the form correctly and Submit Again'
+      nameError.innerHTML = 'Name is Required'
+      emailError.innerHTML = 'Email ID is Required'
+      subjectError.innerHTML = 'subject is Required'
+      messageError.innerHTML = 'message is Required'
 
       setTimeout(function(){submitError.innerHTML = ''},3000)
       
